@@ -4,4 +4,8 @@
     <string name="title_text">Salus. Mental. Wellness</string>
     <string name="todays_thoughts">Join The Community</string>
     <string name="write_thoughts">Enter</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="username_hint">Username</string>
+    <string name="create_text">Sign Up</string>
 </resources>

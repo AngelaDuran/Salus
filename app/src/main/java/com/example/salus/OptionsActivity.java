@@ -50,11 +50,12 @@ public class OptionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
-    /*    emailLogin = findViewById(R.id.email);
+        emailLogin = findViewById(R.id.email);
         password_editText = findViewById(R.id.password);
         loginButton = findViewById(R.id.email_login_button);
         signUpButton = findViewById(R.id.sign_up_button);
- */
+        progressBar = findViewById(R.id.login_progress);
+
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
