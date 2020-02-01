@@ -1,6 +1,5 @@
 package com.example.salus;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,23 +18,33 @@ import androidx.fragment.app.FragmentActivity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity  {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private Button startButton;
+    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startButton = findViewById(R.id.startButton);
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
 
-    public void getStarted(View view) {
-        startActivity(new Intent(MainActivity.this, OptionsActivity.class));
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        LatLng LosAngeles = new LatLng(34.057906, -118.238845);
+        mMap.addMarker(new MarkerOptions().position(LosAngeles).title("LA Hub"));
+        LatLng SanFran = new LatLng(37.773359, -122.425250);
+        mMap.addMarker(new MarkerOptions().position(SanFran).title("SanFran Hub"));
+        LatLng SLO = new LatLng(35.283407, -120.661805);
+        mMap.addMarker(new MarkerOptions().position(SLO).title("SLO Hub"));
+
+        //   mMap.moveCamera(CameraUpdateFactory.newLatLng(LosAngeles));
     }
 }
 
