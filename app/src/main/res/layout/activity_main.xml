@@ -46,9 +46,9 @@
 
     <Button
         android:id="@+id/startButton"
-        android:layout_width="match_parent"
+        android:layout_width="282dp"
         android:textColor="@color/colorAccent"
-        android:background="@android:color/transparent"
+        android:background="#FFFF"
         android:onClick="getStarted"
         android:layout_height="wrap_content"
         android:text="@string/write_thoughts" />
