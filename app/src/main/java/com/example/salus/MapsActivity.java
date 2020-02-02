@@ -1,17 +1,21 @@
 package com.example.salus;
 
 import android.Manifest;
-import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -27,33 +31,15 @@ import com.google.android.gms.maps.model.PatternItem;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.Polyline;
-import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.RoundCap;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
-
-
-import android.util.Log;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.SeekBar;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements
-        OnMapReadyCallback,
+        OnMapReadyCallback, OnMarkerClickListener,
         GoogleMap.OnPolylineClickListener,
         GoogleMap.OnPolygonClickListener {
 
@@ -353,6 +339,30 @@ public class MapsActivity extends FragmentActivity implements
         polygon.setFillColor(color);
 
         Toast.makeText(this, "Area type " + polygon.getTag().toString(), Toast.LENGTH_SHORT).show();
+
+        switch(polygon.getTag().toString()) {
+            case "alpha":
+                break;
+            case "beta":
+                break;
+            case "gama":
+                startActivity(new Intent(MapsActivity.this, SouthRegionActivity.class));
+                break;
+        }
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+
+        switch (marker.getTitle()) {
+            case "LA Hub":
+                startActivity(new Intent(MapsActivity.this, SouthRegionActivity.class));
+                break;
+        }
+        /*if(marker.getTitle().equals("LA Hub")) {
+            startActivity(new Intent(MapsActivity.this, SouthRegionActivity.class));
+        }*/
+        return false;
     }
 }
 
