@@ -12,4 +12,12 @@
         android:layout_height="match_parent"
         android:name="com.google.android.gms.maps.SupportMapFragment"></fragment>
 
+    //Polygon Stuff
+
+
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
