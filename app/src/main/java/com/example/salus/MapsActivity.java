@@ -146,7 +146,7 @@ public class MapsActivity extends FragmentActivity implements
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        //Polygon
+        //DO NOT DELETE
         // Add polylines to the map.
         // Polylines are useful to show a route or some other connection between points.
       /*  Polyline polyline1 = googleMap.addPolyline(new PolylineOptions()
